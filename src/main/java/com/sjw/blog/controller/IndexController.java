@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
 * @author Jiawei Shi
-* @version ´´½¨Ê±¼ä£º2018Äê1ÔÂ18ÈÕ ÏÂÎç3:00:25
+* @version ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º2018ï¿½ï¿½1ï¿½ï¿½18ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½3:00:25
 *
 */
 
@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 	@RequestMapping("/")
 	public String index() {
-		return "index";
+		return "front/index";
 	}
 }
