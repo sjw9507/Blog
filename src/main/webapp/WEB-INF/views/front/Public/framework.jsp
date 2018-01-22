@@ -15,7 +15,7 @@
 <meta name="applicable-device" content="pc,mobile">
 <meta name="MobileOptimized" content="width" />
 <meta name="HandheldFriendly" content="true" />
-<link rel="shortcut icon" href="/img/logo.png">
+<link rel="shortcut icon" href="resource/img/logo.png" type="image/x-icon">
 <rapid:block name="description">
 	<meta name="description" content="${options.optionMetaDescrption}" />
 </rapid:block>
@@ -25,8 +25,8 @@
 <rapid:block name="title">
 	<title>${options.optionSiteTitle}-${options.optionSiteDescrption}</title>
 </rapid:block>
-<link rel="stylesheet" href="resource/assets/css/style.css">
-<link rel="stylesheet" href="resource/assets/plugin/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="resource/css/style.css">
+<link rel="stylesheet" href="resource/plugin/font-awesome/css/font-awesome.min.css">
 
 <rapid:block name="header-style">
 
@@ -48,10 +48,10 @@
 
 	</div>
 
-	<script src="resource/assets/js/jquery.min.js"></script>
-	<script src="resource/assets/js/superfish.js"></script>
-	<script src="resource/assets/js/script.js"></script>
-	<script src="resource/assets/plugin/layui/layui.all.js"></script>
+	<script src="resource/js/jquery.min.js"></script>
+	<script src="resource/js/superfish.js"></script>
+	<script src="resource/js/script.js"></script>
+	<script src="resource/plugin/layui/layui.all.js"></script>
 
 	<rapid:block name="footer-script"></rapid:block>
 
