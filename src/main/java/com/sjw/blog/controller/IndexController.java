@@ -1,18 +1,26 @@
 package com.sjw.blog.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 /**
 * @author Jiawei Shi
-* @version ����ʱ�䣺2018��1��18�� ����3:00:25
+* @version 创建时间：2018年1月23日 下午2:40:09
 *
 */
-
-@Controller
 public class IndexController {
+	
+	@ModelAttribute
+	public void init(Model model) {
+		
+	}
+	
+	
+	
 	@RequestMapping("/")
-	public String index() {
+	public String index() throws Exception {
 		return "front/index";
 	}
 }

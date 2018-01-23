@@ -27,7 +27,8 @@
 <rapid:override name="left">
 	<div id="primary" class="content-area">
 
-		<main id="main" class="site-main" role="main"> <c:forEach items="${articleListVoList}" var="a">
+		<main id="main" class="site-main" role="main"> 
+		<c:forEach items="${articleListVoList}" var="a">
 
 			<article class="post type-post">
 
@@ -102,7 +103,8 @@
 					<a href="/article/${a.articleCustom.articleId}" rel="bookmark"> 阅读全文 </a>
 				</span>
 			</article>
-		</c:forEach> </main>
+		</c:forEach> 
+		</main>
 
 		<c:if test="${articleListVoList[0].page.totalPageCount>1}">
 			<nav class="navigation pagination" role="navigation">
