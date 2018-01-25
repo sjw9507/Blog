@@ -104,7 +104,7 @@
 			</article>
 		</c:forEach> </main>
 
-		<%--分页 --%>
+		<%--分页 start--%>
 		<c:if test="${articleListVoList[0].page.totalPageCount>1}">
 			<nav class="navigation pagination" role="navigation">
 				<div class="nav-links">

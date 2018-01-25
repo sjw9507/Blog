@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 
 
-// 结束
+// ready()结束
 });
 
 
@@ -167,7 +167,7 @@ $("#weixin_btn").click(function () {
     }
 })(jQuery);
 
-$("#scrolldiv").textSlider({line: 1, speed: 300, timer: 6000});
+$("#scrolldiv").textSlider({line: 1, speed: 300, timer: 4000});
 
 
 //打赏

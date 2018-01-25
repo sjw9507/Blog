@@ -13,7 +13,6 @@ import com.sjw.blog.entity.Notice;
 *
 */
 
-@Repository
 public interface NoticeDao {
 
 	//获取公告列表

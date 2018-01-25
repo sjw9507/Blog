@@ -13,6 +13,7 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
+	<!-- 自动扫描,如果扫描到有@Controller,@Service,@Component等这些注解的类，则把这些类注册为bean -->
 	<context:component-scan base-package="com.sjw.blog.service"/>
 	
 	<!-- 事务管理器 -->

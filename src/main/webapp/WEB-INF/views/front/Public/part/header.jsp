@@ -21,7 +21,7 @@
 			</div>
 			<div class="menu-topmenu-container">
 				<ul id="menu-topmenu" class="top-menu">
-					<c:forEach items="${menuCustomList}" var="m">
+					<c:forEach items="${menuList}" var="m">
 						<li class="menu-item">
 							<c:if test="${m.menuLevel==1}">
 								<a href="${m.menuUrl}">
@@ -90,7 +90,7 @@
 								</c:if>
 							</c:forEach>
 							<%--主要菜单其余部分--%>
-							<c:forEach items="${menuCustomList}" var="m">
+							<c:forEach items="${menuList}" var="m">
 								<c:if test="${m.menuLevel==2}">
 									<li>
 										<a href="${m.menuUrl}">

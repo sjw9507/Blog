@@ -18,8 +18,8 @@
 
 
 
-    <!-- 扫描所有的Controller -->
-    <context:component-scan base-package="com.sjw.blog.controller"></context:component-scan>
+    <!-- 自动扫描,如果扫描到有@Controller,@Service,@Component等这些注解的类，则把这些类注册为bean -->
+    <context:component-scan base-package="com.sjw.blog.controller"/>
 
     <!-- 一个配置节解决映射器和适配器的配置注解配置 -->
     <mvc:annotation-driven/>

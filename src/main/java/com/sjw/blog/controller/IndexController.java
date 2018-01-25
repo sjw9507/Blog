@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sjw.blog.entity.Menu;
 import com.sjw.blog.entity.Notice;
+import com.sjw.blog.service.MenuService;
 import com.sjw.blog.service.NoticeService;
 
 /**
@@ -23,19 +25,18 @@ public class IndexController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	
+    @Autowired
+    private MenuService menuService;
+    
 	@ModelAttribute
-	public void init(Model model){
+	public void init(Model model) throws Exception{
 		//公告
-		List<Notice> noticeList = null;
-		try {
-			noticeList = noticeService.getNotice(1);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		List<Notice> noticeList = noticeService.getNotice(1);
 		model.addAttribute("noticeList", noticeList);
 		
+		//顶部菜单
+		List<Menu> menuList = menuService.getMenu(1);
+		model.addAttribute("menuList", menuList);
 	}
 	
 	@RequestMapping("/")
