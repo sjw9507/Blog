@@ -13,7 +13,7 @@
 		<div id="scrolldiv">
 			<div class="scrolltext">
 				<ul style="margin-top: 0px;">
-					<c:forEach items="${noticeCustomList}" var="n">
+					<c:forEach items="${noticeList}" var="n">
 						<li class="scrolltext-title">
 							<a href="/notice/${n.noticeId}" rel="bookmark">${n.noticeTitle}</a>
 						</li>
@@ -27,8 +27,7 @@
 <rapid:override name="left">
 	<div id="primary" class="content-area">
 
-		<main id="main" class="site-main" role="main"> 
-		<c:forEach items="${articleListVoList}" var="a">
+		<main id="main" class="site-main" role="main"> <c:forEach items="${articleListVoList}" var="a">
 
 			<article class="post type-post">
 
@@ -103,9 +102,9 @@
 					<a href="/article/${a.articleCustom.articleId}" rel="bookmark"> 阅读全文 </a>
 				</span>
 			</article>
-		</c:forEach> 
-		</main>
+		</c:forEach> </main>
 
+		<%--分页 --%>
 		<c:if test="${articleListVoList[0].page.totalPageCount>1}">
 			<nav class="navigation pagination" role="navigation">
 				<div class="nav-links">

@@ -1,5 +1,12 @@
 package com.sjw.blog.service.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sjw.blog.dao.NoticeDao;
+import com.sjw.blog.entity.Notice;
 import com.sjw.blog.service.NoticeService;
 
 /**
@@ -8,6 +15,16 @@ import com.sjw.blog.service.NoticeService;
 *
 */
 
+@Service
 public class NoticeServiceImpl implements NoticeService {
+
+	@Autowired
+	private NoticeDao noticeDao;
+	
+	@Override
+	public List<Notice> getNotice(Integer status) throws Exception {
+		List<Notice> noticeList = noticeDao.getNotice(status);
+		return noticeList;
+	}
 	
 }

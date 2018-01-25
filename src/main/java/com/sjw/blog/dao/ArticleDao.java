@@ -4,6 +4,6 @@ package com.sjw.blog.dao;
 * @version 创建时间：2018年1月24日 下午2:53:54
 *
 */
-public class ArticleDao {
+public interface ArticleDao {
 
 }
