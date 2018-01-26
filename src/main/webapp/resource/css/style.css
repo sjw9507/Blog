@@ -159,7 +159,7 @@ a:hover {
 }
 
 :focus {
-    outline: 0
+    outline: 0;
 }
 
 button::-moz-focus-inner,

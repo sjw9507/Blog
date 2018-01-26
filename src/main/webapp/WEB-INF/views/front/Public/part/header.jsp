@@ -129,7 +129,7 @@
 			</span>
 		</form>
 	</div>
-	<div class="clear"></div>
+	<div class="clear">111111111111</div>
 </div>
 <%--搜索框 end--%>
 
