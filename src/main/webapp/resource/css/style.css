@@ -419,7 +419,7 @@ a, button, input {
 }
 
 .user-login, .nav-login {
-    float: left;
+    float: right;
     margin-left: 5px;
 }
 

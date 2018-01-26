@@ -12,7 +12,10 @@
 			<div class="user-login">
 				<c:choose>
 					<c:when test="${sessionScope.user==null}">
-						<a href="/admin">登录</a>
+						<i class="fa fa-user"></i>
+						<a href="window.location.href='http://www.baidu.com'">登录</a>
+						<i class="fa fa-user"></i>
+						<a href="window.location.href='http://www.baidu.com'">注册</a>
 					</c:when>
 					<c:otherwise>
 						<a href="/admin">进入后台</a>
@@ -44,10 +47,11 @@
 		<div id="top-menu">
 			<span class="nav-search">
 				<i class="fa fa-search"></i>
+				<span class="font-text">搜索</span>
 			</span>
 			<div class="logo-site">
 				<h1 class="site-title">
-					<a href="/" title="${options.optionSiteTitle}">${options.optionSiteTitle}</a>
+					<a href="#" title="${options.optionSiteTitle}">${options.optionSiteTitle}</a>
 				</h1>
 				<p class="site-description">${options.optionSiteDescrption}</p>
 			</div>

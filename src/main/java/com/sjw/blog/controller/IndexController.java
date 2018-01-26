@@ -8,10 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sjw.blog.entity.Category;
 import com.sjw.blog.entity.Menu;
 import com.sjw.blog.entity.Notice;
+import com.sjw.blog.entity.Options;
+import com.sjw.blog.service.CategoryService;
 import com.sjw.blog.service.MenuService;
 import com.sjw.blog.service.NoticeService;
+import com.sjw.blog.service.OptionsService;
 
 /**
 * @author Jiawei Shi
@@ -28,6 +32,12 @@ public class IndexController {
     @Autowired
     private MenuService menuService;
     
+    @Autowired
+    private OptionsService optionsService;
+    
+    @Autowired
+    private CategoryService categoryService;
+    
 	@ModelAttribute
 	public void init(Model model) throws Exception{
 		//公告
@@ -37,6 +47,16 @@ public class IndexController {
 		//顶部菜单
 		List<Menu> menuList = menuService.getMenu(1);
 		model.addAttribute("menuList", menuList);
+		
+		//基本信息
+		Options options = optionsService.getOptions();
+		model.addAttribute("options", options);
+		
+		//头部目录
+		List<Category> categoryList = categoryService.getCategory(1);
+		model.addAttribute("categoryList", categoryList);
+		
+		
 	}
 	
 	@RequestMapping("/")

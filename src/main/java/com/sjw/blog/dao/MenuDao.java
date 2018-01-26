@@ -13,6 +13,6 @@ import com.sjw.blog.entity.Menu;
  */
 public interface MenuDao {
 
-	List<Menu> getMenu(@Param(value="status") Integer status) throws Exception;
+	List<Menu> getMenu(@Param(value = "status") Integer status) throws Exception;
 
 }
