@@ -23,8 +23,7 @@ public class MenuServiceImpl implements MenuService {
 	
 	@Override
 	public List<Menu> getMenu(Integer status) throws Exception {
-		List<Menu> menuList = menuDao.getMenu(status);
-		return menuList;
+		return menuDao.getMenu(status);
 	}
 	
 }

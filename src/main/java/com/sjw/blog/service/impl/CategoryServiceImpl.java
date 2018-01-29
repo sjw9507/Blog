@@ -22,7 +22,6 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public List<Category> getCategory(Integer status) throws Exception {
-		List<Category> categoryList = categoryDao.getCategory(status);
-		return categoryList;
+		return categoryDao.getCategory(status);
 	}
 }

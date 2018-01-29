@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sjw.blog.dao.TagDao">
+	<sql id="tag_table_all_columns">
+		tag_id,
+		tag_name,
+		tag_description,
+		tag_status
+	</sql>
+
+	<!--获得标签列表 -->
+	<select id="getTag" resultType="com.sjw.blog.entity.Tag">
+		SELECT
+		<include refid="tag_table_all_columns" />
+		FROM `tag`
+		<where>
+			<if test="status!=null">
+				tag_status=#{status}
+			</if>
+		</where>
+		ORDER BY tag_status ASC
+	</select>
+</mapper>

@@ -23,8 +23,7 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	@Override
 	public List<Notice> getNotice(Integer status) throws Exception {
-		List<Notice> noticeList = noticeDao.getNotice(status);
-		return noticeList;
+		return noticeDao.getNotice(status);
 	}
 	
 }

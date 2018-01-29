@@ -8,14 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sjw.blog.dto.TagDTO;
 import com.sjw.blog.entity.Category;
 import com.sjw.blog.entity.Menu;
 import com.sjw.blog.entity.Notice;
 import com.sjw.blog.entity.Options;
+import com.sjw.blog.entity.Tag;
 import com.sjw.blog.service.CategoryService;
 import com.sjw.blog.service.MenuService;
 import com.sjw.blog.service.NoticeService;
 import com.sjw.blog.service.OptionsService;
+import com.sjw.blog.service.TagService;
 
 /**
 * @author Jiawei Shi
@@ -38,6 +41,9 @@ public class IndexController {
     @Autowired
     private CategoryService categoryService;
     
+    @Autowired
+    private TagService tagService;
+    
 	@ModelAttribute
 	public void init(Model model) throws Exception{
 		//公告
@@ -52,11 +58,13 @@ public class IndexController {
 		Options options = optionsService.getOptions();
 		model.addAttribute("options", options);
 		
-		//头部目录
+		//菜单目录
 		List<Category> categoryList = categoryService.getCategory(1);
 		model.addAttribute("categoryList", categoryList);
 		
-		
+		//标签
+		List<TagDTO> tagList = tagService.getTag(1);
+		model.addAttribute("tagList", tagList);
 	}
 	
 	@RequestMapping("/")

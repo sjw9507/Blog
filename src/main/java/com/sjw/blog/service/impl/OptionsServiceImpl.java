@@ -21,8 +21,7 @@ public class OptionsServiceImpl implements OptionsService {
 	
 	@Override
 	public Options getOptions() throws Exception {
-		Options options = optionsDao.getOptions();
-		return options;
+		return optionsDao.getOptions();
 	}
 	
 }
