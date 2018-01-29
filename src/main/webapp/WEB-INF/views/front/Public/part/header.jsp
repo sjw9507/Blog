@@ -70,7 +70,7 @@
 							<li>
 								<a href="/">
 									<i class="fa-home fa"></i>
-									<span class="font-text">首页</span>
+									<span class="font-text" data-toggle="tooltip" title="首页">首页</span>
 								</a>
 							</li>
 

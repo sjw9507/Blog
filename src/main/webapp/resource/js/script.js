@@ -55,10 +55,11 @@ $(document).ready(function() {
 
 
 
-// ready()结束
+// $(document).ready()结束
 });
 
-
+//bootstrap tooltip激活
+$(function () { $("[data-toggle='tooltip']").tooltip(); });
 
 
 // 隐藏侧边
@@ -396,3 +397,5 @@ $("#applyLinkForm").submit(function () {
         }
     })
 })
+
+

@@ -53,6 +53,7 @@
 	<script src="resource/js/script.js"></script>
 	<script src="resource/plugin/layui/layui.all.js"></script>
 	<script src="resource/js/canvas_line.js"></script>
+	<script src="resource/plugin/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
 	<rapid:block name="footer-script"></rapid:block>
 
