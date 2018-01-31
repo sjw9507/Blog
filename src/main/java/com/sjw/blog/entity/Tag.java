@@ -2,6 +2,10 @@ package com.sjw.blog.entity;
 
 import java.io.Serializable;
 
+import org.springframework.beans.BeanUtils;
+
+import com.sjw.blog.dto.TagDTO;
+
 public class Tag implements Serializable {
     private Integer tagId;
 
@@ -58,5 +62,11 @@ public class Tag implements Serializable {
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
+    }
+    
+    public static TagDTO transformToDTO (Tag tag) {
+    	TagDTO tagDTO = new TagDTO();
+    	BeanUtils.copyProperties(tag, tagDTO);
+    	return tagDTO;
     }
 }

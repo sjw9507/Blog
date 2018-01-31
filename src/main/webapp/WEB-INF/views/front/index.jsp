@@ -27,41 +27,41 @@
 <rapid:override name="left">
 	<div id="primary" class="content-area">
 
-		<main id="main" class="site-main" role="main"> <c:forEach items="${articleListVoList}" var="a">
+		<main id="main" class="site-main" role="main"> <c:forEach items="${articleDTOList}" var="a">
 
 			<article class="post type-post">
 
 				<figure class="thumbnail">
-					<a href="/article/${a.articleCustom.articleId}">
-						<img width="280" height="210" src="/img/thumbnail/random/img_${a.articleCustom.articleId%400}.jpg"
-							class="attachment-content size-content wp-post-image" alt="${a.articleCustom.articleTitle}">
+					<a href="/article/${a.article.articleId}">
+						<img width="280" height="210" src="/img/thumbnail/random/img_${a.article.articleId%400}.jpg"
+							class="attachment-content size-content wp-post-image" alt="${a.article.articleTitle}">
 					</a>
-					<span class="cat">
+					<%-- <span class="cat">
 						<a href="/category/${a.categoryCustomList[a.categoryCustomList.length-1].categoryId}">
 							${a.categoryCustomList[a.categoryCustomList.length-1].categoryName} </a>
-					</span>
+					</span> --%>
 				</figure>
 
 				<header class="entry-header">
 					<h2 class="entry-title">
-						<a href="/article/${a.articleCustom.articleId}" rel="bookmark"> ${a.articleCustom.articleTitle} </a>
+						<a href="/article/${a.article.articleId}" rel="bookmark"> ${a.article.articleTitle} </a>
 					</h2>
 				</header>
 
 				<div class="entry-content">
 					<div class="archive-content">
-						<lyz:htmlFilter>${a.articleCustom.articleContent}</lyz:htmlFilter>
+						<lyz:htmlFilter>${a.article.articleContent}</lyz:htmlFilter>
 						......
 					</div>
 					<span class="title-l"></span>
 					<span class="new-icon">
 						<c:choose>
-							<c:when test="${a.articleCustom.articleStatus==2}">
+							<c:when test="${a.article.articleStatus==2}">
 								<i class="fa fa-bookmark-o"></i>
 							</c:when>
 							<c:otherwise>
 								<jsp:useBean id="nowDate" class="java.util.Date" />
-								<c:set var="interval" value="${nowDate.time - a.articleCustom.articlePostTime.time}" />
+								<c:set var="interval" value="${nowDate.time - a.article.articlePostTime.time}" />
 								<%--时间差毫秒数--%>
 								<fmt:formatNumber value="${interval/1000/60/60/24}" pattern="#0" var="days" />
 								<c:if test="${days <= 7}">NEW</c:if>
@@ -72,22 +72,22 @@
 					</span>
 					<span class="entry-meta">
 						<span class="date">
-							<fmt:formatDate value="${a.articleCustom.articlePostTime}" pattern="yyyy年MM月dd日" />
+							<fmt:formatDate value="${a.article.articlePostTime}" pattern="yyyy年MM月dd日" />
 							&nbsp;&nbsp;
 						</span>
 						<span class="views">
-							<i class="fa fa-eye"></i> ${a.articleCustom.articleViewCount} views
+							<i class="fa fa-eye"></i> ${a.article.articleViewCount} views
 						</span>
 						<span class="comment">
 							&nbsp;&nbsp;
-							<a href="/article/${a.articleCustom.articleId}#comments" rel="external nofollow">
+							<a href="/article/${a.article.articleId}#comments" rel="external nofollow">
 								<i class="fa fa-comment-o"></i>
 								<c:choose>
-									<c:when test="${a.articleCustom.articleCommentCount==0}">
+									<c:when test="${a.article.articleCommentCount==0}">
                                                     发表评论
                                                 </c:when>
 									<c:otherwise>
-                                                    ${a.articleCustom.articleCommentCount}
+                                                    ${a.article.articleCommentCount}
                                                 </c:otherwise>
 								</c:choose>
 
@@ -99,7 +99,7 @@
 				<!-- .entry-content -->
 
 				<span class="entry-more">
-					<a href="/article/${a.articleCustom.articleId}" rel="bookmark"> 阅读全文 </a>
+					<a href="/article/${a.article.articleId}" rel="bookmark"> 阅读全文 </a>
 				</span>
 			</article>
 		</c:forEach> </main>

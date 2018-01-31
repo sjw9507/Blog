@@ -27,8 +27,7 @@ public class TagServiceImpl implements TagService {
 		List<Tag> tagList = tagDao.getTag(status);
 		List<TagDTO> tagDTOList = new ArrayList<>();
 		for (Tag tag : tagList) {
-			TagDTO tagDTO = new TagDTO();
-			BeanUtils.copyProperties(tag, tagDTO);
+			TagDTO tagDTO = Tag.transformToDTO(tag);
 			tagDTO.setArticleCount(1);
 			tagDTOList.add(tagDTO);
 		}
