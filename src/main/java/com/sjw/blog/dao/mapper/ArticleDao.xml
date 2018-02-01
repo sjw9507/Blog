@@ -44,4 +44,19 @@
 		limit #{startPos},#{pageSize}
 	</select>
 
+	<select id="countArticleByTag" resultType="Integer">
+		SELECT COUNT(*) FROM `article`
+		<where>
+			article.article_tag_ids = #{tagId} OR
+            article.article_tag_ids LIKE "${tagId},%" OR
+            article.article_tag_ids LIKE "%,${tagId},%" OR
+            article.article_tag_ids LIKE "%,${tagId}"
+			<if test="status!=null">
+				AND article_status=#{status}
+			</if>
+			
+		</where>
+	
+	</select>
+
 </mapper>

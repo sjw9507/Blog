@@ -15,6 +15,9 @@ public interface ArticleDao {
 
 	int countArticle(@Param(value = "status") Integer status) throws Exception;
 
-	List<Article> getArticleByPage(@Param(value = "status") Integer status, @Param(value = "startPos") int startPos, @Param(value = "pageSize") int pageSize);
+	List<Article> getArticleByPage(@Param(value = "status") Integer status, @Param(value = "startPos") int startPos,
+			@Param(value = "pageSize") int pageSize);
+
+	Integer countArticleByTag(@Param(value = "status") Integer status, @Param(value = "tagId") Integer tagId);
 
 }

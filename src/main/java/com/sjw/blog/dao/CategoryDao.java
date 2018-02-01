@@ -15,4 +15,6 @@ public interface CategoryDao {
 
 	List<Category> getCategory(@Param(value = "status") Integer status) throws Exception;
 
+	Category getCategoryById(@Param(value = "status") Integer status, @Param(value = "id") Integer id);
+
 }

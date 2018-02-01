@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib prefix="rapid" uri="http://www.rapid-framework.org.cn/rapid"%>
-
+<%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid"%>
+<%@ taglib uri="/WEB-INF/myTag.tld" prefix="sjw"%>
 
 <rapid:override name="breadcrumb">
 	<nav class="breadcrumb">
@@ -33,13 +33,13 @@
 
 				<figure class="thumbnail">
 					<a href="/article/${a.article.articleId}">
-						<img width="280" height="210" src="/img/thumbnail/random/img_${a.article.articleId%400}.jpg"
-							class="attachment-content size-content wp-post-image" alt="${a.article.articleTitle}">
+						<img width="280" height="210" src="resource/img/thumbnail/random/img_${a.article.articleId%400}.jpg"
+							class="attachment-content size-content wp-post-image" alt="${a.article.articleTitle}"/>
 					</a>
-					<%-- <span class="cat">
-						<a href="/category/${a.categoryCustomList[a.categoryCustomList.length-1].categoryId}">
-							${a.categoryCustomList[a.categoryCustomList.length-1].categoryName} </a>
-					</span> --%>
+					<span class="cat">
+						<a href="/category/${a.categoryList[fn:length(a.categoryList)-1].categoryId}">
+							${a.categoryList[fn:length(a.categoryList)-1].categoryName} </a>
+					</span>
 				</figure>
 
 				<header class="entry-header">
@@ -50,8 +50,8 @@
 
 				<div class="entry-content">
 					<div class="archive-content">
-						<lyz:htmlFilter>${a.article.articleContent}</lyz:htmlFilter>
-						......
+						<sjw:htmlFilter>${a.article.articleContent}</sjw:htmlFilter>
+						......<br><br><br>
 					</div>
 					<span class="title-l"></span>
 					<span class="new-icon">

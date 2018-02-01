@@ -10,7 +10,7 @@
 		category_icon,
 		category_status
 	</sql>
-	
+
 	<select id="getCategory" resultType="com.sjw.blog.entity.Category">
 		SELECT
 		<include refid="category_table_all_column" />
@@ -22,4 +22,17 @@
 		</where>
 		order by category_status ASC, category_order desc,category_id asc
 	</select>
+
+	<select id="getCategoryById" resultType="com.sjw.blog.entity.Category">
+		SELECT
+		<include refid="category_table_all_column" />
+		FROM category
+		<where>
+			<if test="status!=null">
+				category_status=#{status} AND
+			</if>
+			category.category_id=#{id}
+		</where>
+	</select>
+
 </mapper>
