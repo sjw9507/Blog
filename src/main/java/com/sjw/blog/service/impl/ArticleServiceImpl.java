@@ -60,6 +60,10 @@ public class ArticleServiceImpl implements ArticleService {
 			
 			
 			
+			//page信息
+			articleDTO.setPage(page);
+			
+		
 			articleDTOList.add(articleDTO);
 		}
 

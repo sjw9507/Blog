@@ -4,7 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid"%>
 <%@ taglib uri="/WEB-INF/myTag.tld" prefix="sjw"%>
-
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <rapid:override name="breadcrumb">
 	<nav class="breadcrumb">
 		<div class="bull">
@@ -15,7 +19,7 @@
 				<ul style="margin-top: 0px;">
 					<c:forEach items="${noticeList}" var="n">
 						<li class="scrolltext-title">
-							<a href="/notice/${n.noticeId}" rel="bookmark">${n.noticeTitle}</a>
+							<a href="<%=basePath%>notice/${n.noticeId}" rel="bookmark">${n.noticeTitle}</a>
 						</li>
 					</c:forEach>
 				</ul>
@@ -32,26 +36,28 @@
 			<article class="post type-post">
 
 				<figure class="thumbnail">
-					<a href="/article/${a.article.articleId}">
-						<img width="280" height="210" src="resource/img/thumbnail/random/img_${a.article.articleId%400}.jpg"
-							class="attachment-content size-content wp-post-image" alt="${a.article.articleTitle}"/>
+					<a href="<%=basePath%>article/${a.article.articleId}">
+						<img width="280" height="210" src="<%=basePath%>resource/img/thumbnail/random/img_${a.article.articleId%400}.jpg"
+							class="attachment-content size-content wp-post-image" alt="${a.article.articleTitle}" />
 					</a>
 					<span class="cat">
-						<a href="/category/${a.categoryList[fn:length(a.categoryList)-1].categoryId}">
+						<a href="<%=basePath%>category/${a.categoryList[fn:length(a.categoryList)-1].categoryId}">
 							${a.categoryList[fn:length(a.categoryList)-1].categoryName} </a>
 					</span>
 				</figure>
 
 				<header class="entry-header">
 					<h2 class="entry-title">
-						<a href="/article/${a.article.articleId}" rel="bookmark"> ${a.article.articleTitle} </a>
+						<a href="<%=basePath%>article/${a.article.articleId}" rel="bookmark"> ${a.article.articleTitle} </a>
 					</h2>
 				</header>
 
 				<div class="entry-content">
 					<div class="archive-content">
 						<sjw:htmlFilter>${a.article.articleContent}</sjw:htmlFilter>
-						......<br><br><br>
+						......<br>
+						<br>
+						<br>
 					</div>
 					<span class="title-l"></span>
 					<span class="new-icon">
@@ -105,41 +111,41 @@
 		</c:forEach> </main>
 
 		<%--分页 start--%>
-		<c:if test="${articleListVoList[0].page.totalPageCount>1}">
+		<c:if test="${articleDTOList[0].page.totalPageCount > 1}">
 			<nav class="navigation pagination" role="navigation">
 				<div class="nav-links">
 					<c:choose>
-						<c:when test="${articleListVoList[0].page.totalPageCount <= 3 }">
+						<c:when test="${articleDTOList[0].page.totalPageCount <= 3 }">
 							<c:set var="begin" value="1" />
-							<c:set var="end" value="${articleListVoList[0].page.totalPageCount }" />
+							<c:set var="end" value="${articleDTOList[0].page.totalPageCount }" />
 						</c:when>
 						<c:otherwise>
-							<c:set var="begin" value="${articleListVoList[0].page.pageNow-1 }" />
-							<c:set var="end" value="${articleListVoList[0].page.pageNow + 2}" />
+							<c:set var="begin" value="${articleDTOList[0].page.pageNow-1 }" />
+							<c:set var="end" value="${articleDTOList[0].page.pageNow + 2}" />
 							<c:if test="${begin < 2 }">
 								<c:set var="begin" value="1" />
 								<c:set var="end" value="3" />
 							</c:if>
-							<c:if test="${end > articleListVoList[0].page.totalPageCount }">
-								<c:set var="begin" value="${articleListVoList[0].page.totalPageCount-2 }" />
-								<c:set var="end" value="${articleListVoList[0].page.totalPageCount }" />
+							<c:if test="${end > articleDTOList[0].page.totalPageCount }">
+								<c:set var="begin" value="${articleDTOList[0].page.totalPageCount-2 }" />
+								<c:set var="end" value="${articleDTOList[0].page.totalPageCount }" />
 							</c:if>
 						</c:otherwise>
 					</c:choose>
 					<%--上一页 --%>
 					<c:choose>
-						<c:when test="${articleListVoList[0].page.pageNow eq 1 }">
+						<c:when test="${articleDTOList[0].page.pageNow eq 1 }">
 							<%--当前页为第一页，隐藏上一页按钮--%>
 						</c:when>
 						<c:otherwise>
-							<a class="page-numbers" href="/p/${articleListVoList[0].page.pageNow-1}">
+							<a class="page-numbers" href="<%=basePath%>p/${articleDTOList[0].page.pageNow-1}">
 								<span class="fa fa-angle-left"></span>
 							</a>
 						</c:otherwise>
 					</c:choose>
 					<%--显示第一页的页码--%>
 					<c:if test="${begin >= 2 }">
-						<a class="page-numbers" href="/p/1">1</a>
+						<a class="page-numbers" href="<%=basePath%>p/1">1</a>
 					</c:if>
 					<%--显示点点点--%>
 					<c:if test="${begin  > 2 }">
@@ -148,29 +154,29 @@
 					<%--打印 页码--%>
 					<c:forEach begin="${begin }" end="${end }" var="i">
 						<c:choose>
-							<c:when test="${i eq articleListVoList[0].page.pageNow }">
+							<c:when test="${i eq articleDTOList[0].page.pageNow }">
 								<a class="page-numbers current">${i}</a>
 							</c:when>
 							<c:otherwise>
-								<a class="page-numbers" href="/p/${i}">${i }</a>
+								<a class="page-numbers" href="<%=basePath%>p/${i}">${i }</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					<%-- 显示点点点 --%>
-					<c:if test="${end < articleListVoList[0].page.totalPageCount-1 }">
+					<c:if test="${end < articleDTOList[0].page.totalPageCount-1 }">
 						<span class="page-numbers dots">…</span>
 					</c:if>
 					<%-- 显示最后一页的数字 --%>
-					<c:if test="${end < articleListVoList[0].page.totalPageCount }">
-						<a href="/p/${articleListVoList[0].page.totalPageCount}"> ${articleListVoList[0].page.totalPageCount} </a>
+					<c:if test="${end < articleDTOList[0].page.totalPageCount }">
+						<a href="<%=basePath%>p/${articleDTOList[0].page.totalPageCount}"> ${articleDTOList[0].page.totalPageCount} </a>
 					</c:if>
 					<%--下一页 --%>
 					<c:choose>
-						<c:when test="${articleListVoList[0].page.pageNow eq articleListVoList[0].page.totalPageCount }">
+						<c:when test="${articleDTOList[0].page.pageNow eq articleDTOList[0].page.totalPageCount }">
 							<%--到了尾页隐藏，下一页按钮--%>
 						</c:when>
 						<c:otherwise>
-							<a class="page-numbers" href="/p/${articleListVoList[0].page.pageNow+1}">
+							<a class="page-numbers" href="<%=basePath%>p/${articleDTOList[0].page.pageNow+1}">
 								<span class="fa fa-angle-right"></span>
 							</a>
 						</c:otherwise>

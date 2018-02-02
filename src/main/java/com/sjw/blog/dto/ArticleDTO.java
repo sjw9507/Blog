@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.sjw.blog.entity.Article;
 import com.sjw.blog.entity.Category;
-import com.sjw.blog.entity.Page;
 import com.sjw.blog.entity.Tag;
 import com.sjw.blog.entity.User;
+import com.sjw.blog.util.Page;
 
 /**
  * @author Jiawei Shi

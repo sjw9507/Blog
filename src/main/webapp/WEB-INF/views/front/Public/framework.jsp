@@ -3,7 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="rapid" uri="http://www.rapid-framework.org.cn/rapid"%>
-
+<%
+	String path2 = request.getContextPath();
+	String basePath2 = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path2 + "/";
+%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -25,8 +29,8 @@
 <rapid:block name="title">
 	<title>${options.optionSiteTitle}-${options.optionSiteDescrption}</title>
 </rapid:block>
-<link rel="stylesheet" href="resource/css/style.css">
-<link rel="stylesheet" href="resource/plugin/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=basePath2%>resource/css/style.css">
+<link rel="stylesheet" href="<%=basePath2%>resource/plugin/font-awesome/css/font-awesome.min.css">
 
 <rapid:block name="header-style">
 
@@ -48,12 +52,12 @@
 
 	</div>
 
-	<script src="resource/js/jquery.min.js"></script>
-	<script src="resource/js/superfish.js"></script>
-	<script src="resource/js/script.js"></script>
-	<script src="resource/plugin/layui/layui.all.js"></script>
-	<script src="resource/js/canvas_line.js"></script>
-	<script src="resource/plugin/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script src="<%=basePath2%>resource/js/jquery.min.js"></script>
+	<script src="<%=basePath2%>resource/js/superfish.js"></script>
+	<script src="<%=basePath2%>resource/js/script.js"></script>
+	<script src="<%=basePath2%>resource/plugin/layui/layui.all.js"></script>
+	<script src="<%=basePath2%>resource/js/canvas_line.js"></script>
+	<script src="<%=basePath2%>resource/plugin/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
 	<rapid:block name="footer-script"></rapid:block>
 
