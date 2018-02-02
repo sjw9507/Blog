@@ -21,7 +21,7 @@ public class ArticleDTO {
 	private List<Category> categoryList;
 
 	// 对应的标签
-	private List<Tag> tagList;
+	private List<TagDTO> tagDTOList;
 
 	// 分页
 	private Page page;
@@ -45,12 +45,12 @@ public class ArticleDTO {
 		this.categoryList = categoryList;
 	}
 
-	public List<Tag> getTagList() {
-		return tagList;
+	public List<TagDTO> getTagDTOList() {
+		return tagDTOList;
 	}
 
-	public void setTagList(List<Tag> tagList) {
-		this.tagList = tagList;
+	public void setTagDTOList(List<TagDTO> tagDTOList) {
+		this.tagDTOList = tagDTOList;
 	}
 
 	public Page getPage() {

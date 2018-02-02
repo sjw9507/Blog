@@ -15,4 +15,6 @@ public interface TagDao {
 
 	List<Tag> getTag(@Param(value = "status") Integer status) throws Exception;
 
+	Tag selectTagById(@Param(value = "id") String id);
+
 }

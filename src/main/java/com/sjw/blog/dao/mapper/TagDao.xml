@@ -20,4 +20,13 @@
 		</where>
 		ORDER BY tag_status ASC
 	</select>
+	
+	<select id="selectTagById" resultType="com.sjw.blog.entity.Tag">
+		SELECT
+		<include refid="tag_table_all_columns" />
+		FROM `tag`	
+		WHERE tag_id = #{id}
+	
+	</select>
+	
 </mapper>

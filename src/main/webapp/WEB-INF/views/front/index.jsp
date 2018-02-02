@@ -55,9 +55,7 @@
 				<div class="entry-content">
 					<div class="archive-content">
 						<sjw:htmlFilter>${a.article.articleContent}</sjw:htmlFilter>
-						......<br>
-						<br>
-						<br>
+						......<br> <br> <br>
 					</div>
 					<span class="title-l"></span>
 					<span class="new-icon">
@@ -120,7 +118,7 @@
 							<c:set var="end" value="${articleDTOList[0].page.totalPageCount }" />
 						</c:when>
 						<c:otherwise>
-							<c:set var="begin" value="${articleDTOList[0].page.pageNow-1 }" />
+							<c:set var="begin" value="${articleDTOList[0].page.pageNow - 1 }" />
 							<c:set var="end" value="${articleDTOList[0].page.pageNow + 2}" />
 							<c:if test="${begin < 2 }">
 								<c:set var="begin" value="1" />
@@ -158,7 +156,7 @@
 								<a class="page-numbers current">${i}</a>
 							</c:when>
 							<c:otherwise>
-								<a class="page-numbers" href="<%=basePath%>p/${i}">${i }</a>
+								<a class="page-numbers" href="<%=basePath%>p/${i}">${i}</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
