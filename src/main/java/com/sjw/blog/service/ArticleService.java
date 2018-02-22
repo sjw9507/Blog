@@ -3,6 +3,7 @@ package com.sjw.blog.service;
 import java.util.List;
 
 import com.sjw.blog.dto.ArticleDTO;
+import com.sjw.blog.dto.ArticleDetailDTO;
 
 /**
  * @author Jiawei Shi
@@ -12,5 +13,7 @@ import com.sjw.blog.dto.ArticleDTO;
 public interface ArticleService {
 	// 分页显示
 	public List<ArticleDTO> getArticleByPage(Integer status, Integer pageNow, Integer pageSize) throws Exception;
+
+	public ArticleDetailDTO getArticleDetailById(Integer articleId) throws Exception;
 	
 }

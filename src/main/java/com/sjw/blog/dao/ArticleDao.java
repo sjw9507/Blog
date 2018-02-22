@@ -20,4 +20,6 @@ public interface ArticleDao {
 
 	Integer countArticleByTag(@Param(value = "status") Integer status, @Param(value = "tagId") Integer tagId);
 
+	Article getArticleById(@Param(value = "status") Integer status, @Param(value = "articleId")Integer articleId);
+
 }

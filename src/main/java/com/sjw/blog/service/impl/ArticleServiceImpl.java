@@ -8,13 +8,20 @@ import org.springframework.stereotype.Service;
 
 import com.sjw.blog.dao.ArticleDao;
 import com.sjw.blog.dao.CategoryDao;
+import com.sjw.blog.dao.CommentDao;
 import com.sjw.blog.dao.TagDao;
+import com.sjw.blog.dao.UserDao;
 import com.sjw.blog.dto.ArticleDTO;
+import com.sjw.blog.dto.ArticleDetailDTO;
 import com.sjw.blog.dto.TagDTO;
 import com.sjw.blog.entity.Article;
 import com.sjw.blog.entity.Category;
+import com.sjw.blog.entity.Comment;
+import com.sjw.blog.entity.CommentCustom;
 import com.sjw.blog.entity.Tag;
+import com.sjw.blog.entity.User;
 import com.sjw.blog.service.ArticleService;
+import com.sjw.blog.util.Functions;
 import com.sjw.blog.util.Page;
 
 /**
@@ -33,6 +40,12 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Autowired
 	private TagDao tagDao;
+
+	@Autowired
+	private UserDao userDao;
+
+	@Autowired
+	private CommentDao commentDao;
 
 	@Override
 	public List<ArticleDTO> getArticleByPage(Integer status, Integer pageNow, Integer pageSize) throws Exception {
@@ -76,9 +89,8 @@ public class ArticleServiceImpl implements ArticleService {
 				}
 			}
 			articleDTO.setTagDTOList(tagDTOList);
-			
-			
-			//封装文章对象，放入总的list
+
+			// 封装文章对象，放入总的list
 			articleDTOList.add(articleDTO);
 		}
 
@@ -90,6 +102,62 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 
 		return articleDTOList;
+	}
+
+	@Override
+	public ArticleDetailDTO getArticleDetailById(Integer articleId) throws Exception {
+		ArticleDetailDTO articleDetail = new ArticleDetailDTO();
+
+		// 1、获得文章信息
+		Article article = articleDao.getArticleById(1, articleId);
+		if (article == null) {
+			return null;
+		}
+		articleDetail.setArticle(article);
+
+		// 2、作者信息
+		Integer userId = article.getArticleUserId();
+		User user = userDao.selectByUserId(userId);
+		articleDetail.setUser(user);
+
+		// 3、文章分类信息
+		List<Category> categoryList = new ArrayList<Category>();
+		Integer parentCategoryId = article.getArticleParentCategoryId();
+		Integer childCategoryId = article.getArticleChildCategoryId();
+		Category category1 = categoryDao.getCategoryById(1, parentCategoryId);
+		Category category2 = categoryDao.getCategoryById(1, childCategoryId);
+		if (category1 != null) {
+			categoryList.add(category1);
+		}
+		if (category2 != null) {
+			categoryList.add(category2);
+		}
+		articleDetail.setCategoryList(categoryList);
+
+		// 4、文章标签信息
+		List<Tag> tagList = new ArrayList<>();
+		String tagIds = article.getArticleTagIds();
+		if (tagIds != null && tagIds != "") {
+			String[] tagId = tagIds.split(",");
+			for (int i = 0; i < tagId.length; i++) {
+				Tag tag = tagDao.selectTagById(tagId[i]);
+				if (tag != null) {
+					tagList.add(tag);
+				}
+			}
+		}
+		articleDetail.setTagList(tagList);
+
+		// 5、评论信息列表
+		List<CommentCustom> commentList = commentDao.getCommentByArticleId(1, articleId);
+		for(int i=0;i<commentList.size();i++) {
+			String avatar = Functions.getGravatar(commentList.get(i).getCommentAuthorEmail());
+			commentList.get(i).setCommentAuthorAvatar(avatar);
+		}
+		articleDetail.setCommentCustomList(commentList);
+		
+		
+		return articleDetail;
 	}
 
 }

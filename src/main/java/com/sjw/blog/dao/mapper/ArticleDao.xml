@@ -41,22 +41,34 @@
 			</if>
 		</where>
 		ORDER BY article_status ASC, article_order DESC, article_id DESC
-		limit #{startPos},#{pageSize}
+		limit
+		#{startPos},#{pageSize}
 	</select>
 
 	<select id="countArticleByTag" resultType="Integer">
 		SELECT COUNT(*) FROM `article`
 		<where>
 			article.article_tag_ids = #{tagId} OR
-            article.article_tag_ids LIKE "${tagId},%" OR
-            article.article_tag_ids LIKE "%,${tagId},%" OR
-            article.article_tag_ids LIKE "%,${tagId}"
+			article.article_tag_ids LIKE "${tagId},%" OR
+			article.article_tag_ids LIKE "%,${tagId},%" OR
+			article.article_tag_ids LIKE "%,${tagId}"
 			<if test="status!=null">
 				AND article_status=#{status}
 			</if>
-			
+
 		</where>
-	
+
+	</select>
+
+	<select id="getArticleById" resultType="com.sjw.blog.entity.Article">
+		SELECT
+		<include refid="article_table_all_columns" />
+		FROM `article`
+		<where>
+			<if test="status!=null">
+				article_status=#{status}
+			</if>
+		</where>
 	</select>
 
 </mapper>
