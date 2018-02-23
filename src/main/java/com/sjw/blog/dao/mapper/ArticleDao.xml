@@ -49,7 +49,8 @@
 		SELECT COUNT(*) FROM `article`
 		<where>
 			article.article_tag_ids = #{tagId} OR
-			article.article_tag_ids LIKE "${tagId},%" OR
+			article.article_tag_ids LIKE
+			"${tagId},%" OR
 			article.article_tag_ids LIKE "%,${tagId},%" OR
 			article.article_tag_ids LIKE "%,${tagId}"
 			<if test="status!=null">
@@ -65,10 +66,81 @@
 		<include refid="article_table_all_columns" />
 		FROM `article`
 		<where>
+			article_id = #{articleId}
+			<if test="status!=null">
+				and article_status=#{status}
+			</if>
+		</where>
+	</select>
+
+	<!-- 相关文章 -->
+	<select id="listArticleWithSameCategory" resultType="com.sjw.blog.entity.Article">
+		SELECT
+		<include refid="article_table_all_columns" />
+		FROM
+		`article`
+		<trim prefix="WHERE" prefixOverrides="AND |OR " suffixOverrides="AND |OR">
+			<if test="status!=null">
+				article_status=#{status} AND
+			</if>
+			<if test="parentCategoryId!=null">
+				article_parent_category_id=#{parentCategoryId} OR
+			</if>
+			<if test="parentCategoryId!=null">
+				article_child_category_id=#{childCategoryId}
+			</if>
+
+		</trim>
+		ORDER BY article_status ASC, article_order DESC, article_id DESC
+		limit
+		#{limit}
+	</select>
+
+	<!--获得访问量较多的文章 -->
+	<select id="listArticleByViewCount" resultType="com.sjw.blog.entity.Article">
+		SELECT
+		<include refid="article_table_all_columns" />
+		FROM
+		`article`
+		<where>
 			<if test="status!=null">
 				article_status=#{status}
 			</if>
 		</where>
+		ORDER BY article_view_count DESC,article_order DESC, article_id DESC
+		limit #{limit}
 	</select>
+
+	<!--获得下一篇的文章 -->
+	<select id="getAfterArticle" resultType="com.sjw.blog.entity.Article">
+		SELECT
+		<include refid="article_table_all_columns" />
+		FROM
+		`article`
+		<where>
+			article_id > #{articleId}
+			<if test="status!=null">
+				AND article_status=#{status}
+			</if>
+		</where>
+		ORDER BY article_id
+		limit 1
+	</select>
+	<!--获得上一篇的文章 -->
+	<select id="getPreArticle" resultType="com.sjw.blog.entity.Article">
+		SELECT
+		<include refid="article_table_all_columns" />
+		FROM
+		`article`
+		<where>
+			article_id &lt; #{articleId}
+			<if test="status!=null">
+				AND article_status=#{status}
+			</if>
+		</where>
+		ORDER BY article_id
+		limit 1
+	</select>
+
 
 </mapper>

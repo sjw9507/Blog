@@ -22,4 +22,14 @@ public interface ArticleDao {
 
 	Article getArticleById(@Param(value = "status") Integer status, @Param(value = "articleId")Integer articleId);
 
+	List<Article> listArticleWithSameCategory(@Param(value = "status")Integer status, @Param(value = "parentCategoryId")Integer parentCategoryId,
+			@Param(value = "childCategoryId")Integer childCategoryId,@Param(value = "limit")Integer limit);
+
+	List<Article> listArticleByViewCount(@Param(value = "status")Integer status, @Param(value = "limit")Integer limit);
+
+	Article getAfterArticle(@Param(value = "status")Integer status, @Param(value = "articleId")Integer articleId);
+
+	Article getPreArticle(@Param(value = "status")Integer status, @Param(value = "articleId")Integer articleId);
+
+
 }

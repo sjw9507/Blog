@@ -150,14 +150,39 @@ public class ArticleServiceImpl implements ArticleService {
 
 		// 5、评论信息列表
 		List<CommentCustom> commentList = commentDao.getCommentByArticleId(1, articleId);
-		for(int i=0;i<commentList.size();i++) {
+		for (int i = 0; i < commentList.size(); i++) {
 			String avatar = Functions.getGravatar(commentList.get(i).getCommentAuthorEmail());
 			commentList.get(i).setCommentAuthorAvatar(avatar);
 		}
 		articleDetail.setCommentCustomList(commentList);
-		
-		
+
 		return articleDetail;
+	}
+
+	@Override
+	public Article getArticleById(Integer status, Integer articleId) {
+		return articleDao.getArticleById(status, articleId);
+	}
+
+	@Override
+	public List<Article> listArticleWithSameCategory(Integer status, Integer parentCategoryId, Integer childCategoryId,
+			Integer limit) {
+		return articleDao.listArticleWithSameCategory(status, parentCategoryId, childCategoryId, limit);
+	}
+
+	@Override
+	public List<Article> listArticleByViewCount(Integer status, Integer limit) {
+		return articleDao.listArticleByViewCount(status, limit);
+	}
+
+	@Override
+	public Article getAfterArticle(Integer status, Integer articleId) {
+		return articleDao.getAfterArticle(status, articleId);
+	}
+
+	@Override
+	public Article getPreArticle(Integer status, Integer articleId) {
+		return articleDao.getPreArticle(status, articleId);
 	}
 
 }

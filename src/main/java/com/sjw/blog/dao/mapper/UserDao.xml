@@ -19,7 +19,7 @@
 		SELECT
 		<include refid="user_table_all_columns" />
 		from user
-		WHERE userId = #{userId}
+		WHERE user_id = #{userId}
 	</select>
 
 	

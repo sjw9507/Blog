@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sjw.blog.dto.ArticleDTO;
 import com.sjw.blog.dto.ArticleDetailDTO;
+import com.sjw.blog.entity.Article;
 
 /**
  * @author Jiawei Shi
@@ -15,5 +16,15 @@ public interface ArticleService {
 	public List<ArticleDTO> getArticleByPage(Integer status, Integer pageNow, Integer pageSize) throws Exception;
 
 	public ArticleDetailDTO getArticleDetailById(Integer articleId) throws Exception;
+
+	public Article getArticleById(Integer status, Integer articleId);
+
+	public List<Article> listArticleWithSameCategory(Integer status, Integer parentCategoryId, Integer childCategoryId, Integer limit);
+
+	public List<Article> listArticleByViewCount(Integer status, Integer limit);
+
+	public Article getAfterArticle(Integer status, Integer articleId);
+
+	public Article getPreArticle(Integer status, Integer articleId);
 	
 }
