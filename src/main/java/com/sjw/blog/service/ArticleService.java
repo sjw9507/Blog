@@ -26,5 +26,16 @@ public interface ArticleService {
 	public Article getAfterArticle(Integer status, Integer articleId);
 
 	public Article getPreArticle(Integer status, Integer articleId);
+
+	//获得随机文章
+	public List<Article> listRandomArticle(Integer status, Integer num);
+
+	//获得热评文章
+	public List<Article> listArticleByCommentCount(Integer status, int num);
+
+	//获取文章总数
+	public Integer countArticle(Integer status) throws Exception;
+
+	public Integer countArticleComment(Integer status) throws Exception;
 	
 }

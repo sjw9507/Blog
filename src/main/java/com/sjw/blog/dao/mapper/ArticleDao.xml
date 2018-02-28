@@ -29,6 +29,16 @@
 			</if>
 		</where>
 	</select>
+	
+	<!--获得文章留言总数-->
+    <select id="countArticleComment" resultType="Integer">
+        SELECT SUM(article_comment_count) FROM article
+        <where>
+            <if test="status!=null">
+                article_status=#{status}
+            </if>
+        </where>
+    </select>
 
 	<!--通过分页查询文章 -->
 	<select id="getArticleByPage" resultType="com.sjw.blog.entity.Article">
@@ -141,6 +151,37 @@
 		ORDER BY article_id
 		limit 1
 	</select>
+	
+	<!--获得随机文章-->
+    <select id="listRandomArticle" resultType="com.sjw.blog.entity.Article">
+        SELECT
+        <include refid="article_table_all_columns"/>
+        FROM
+        `article`
+        <where>
+            <if test="status!=null">
+                article_status=#{status}
+            </if>
+        </where>
+        ORDER BY
+        RAND()
+        limit #{num}
+    </select>
 
+    <!--获得评论数较多的文章列表-->
+    <select id="listArticleByCommentCount" resultType="com.sjw.blog.entity.Article">
+        SELECT
+        <include refid="article_table_all_columns"/>
+        FROM
+        `article`
+        <where>
+            <if test="status!=null">
+                article_status=#{status}
+            </if>
+        </where>
+        ORDER BY
+        article_comment_count DESC,article_order DESC, article_id DESC
+        limit #{num}
+    </select>
 
 </mapper>

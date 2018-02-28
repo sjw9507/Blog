@@ -185,4 +185,26 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.getPreArticle(status, articleId);
 	}
 
+	@Override
+	public List<Article> listRandomArticle(Integer status, Integer num) {
+		return articleDao.listRandomArticle(status, num);
+	}
+
+	@Override
+	public List<Article> listArticleByCommentCount(Integer status, int num) {
+		return articleDao.listArticleByCommentCount(status, num);
+	}
+
+	@Override
+	public Integer countArticle(Integer status){
+		return articleDao.countArticle(status);
+	}
+
+	@Override
+	public Integer countArticleComment(Integer status) {
+		return articleDao.countArticleComment(status);
+	}
+	
+	
+
 }

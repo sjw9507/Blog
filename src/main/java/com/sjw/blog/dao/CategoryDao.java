@@ -17,4 +17,6 @@ public interface CategoryDao {
 
 	Category getCategoryById(@Param(value = "status") Integer status, @Param(value = "id") Integer id);
 
+	Integer countCategory(@Param(value = "status")Integer status);
+
 }

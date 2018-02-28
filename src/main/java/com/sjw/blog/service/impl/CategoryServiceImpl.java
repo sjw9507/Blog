@@ -24,4 +24,11 @@ public class CategoryServiceImpl implements CategoryService{
 	public List<Category> getCategory(Integer status) throws Exception {
 		return categoryDao.getCategory(status);
 	}
+
+	@Override
+	public Integer countCategory(Integer status) {
+		return categoryDao.countCategory(status);
+	}
+	
+	
 }

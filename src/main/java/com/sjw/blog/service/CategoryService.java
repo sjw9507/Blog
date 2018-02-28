@@ -13,4 +13,6 @@ public interface CategoryService {
 
 	List<Category> getCategory(Integer status) throws Exception;
 
+	Integer countCategory(Integer status);
+
 }

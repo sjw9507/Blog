@@ -34,7 +34,7 @@
 <rapid:override name="breadcrumb">
 	<%--面包屑导航 start--%>
 	<nav class="breadcrumb">
-		<a class="crumbs" href="/">
+		<a class="crumbs" href="<%=basePath%>">
 			<i class="fa fa-home"></i>首页
 		</a>
 		<c:choose>

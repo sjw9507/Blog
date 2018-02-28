@@ -13,7 +13,9 @@ import com.sjw.blog.entity.Article;
  */
 public interface ArticleDao {
 
-	int countArticle(@Param(value = "status") Integer status) throws Exception;
+	Integer countArticle(@Param(value = "status") Integer status);
+	
+	Integer countArticleComment(@Param(value = "status")Integer status);
 
 	List<Article> getArticleByPage(@Param(value = "status") Integer status, @Param(value = "startPos") int startPos,
 			@Param(value = "pageSize") int pageSize);
@@ -31,5 +33,8 @@ public interface ArticleDao {
 
 	Article getPreArticle(@Param(value = "status")Integer status, @Param(value = "articleId")Integer articleId);
 
+	List<Article> listRandomArticle(@Param(value = "status")Integer status, @Param(value = "num")Integer num);
+
+	List<Article> listArticleByCommentCount(@Param(value = "status")Integer status, @Param(value = "num")int num);
 
 }

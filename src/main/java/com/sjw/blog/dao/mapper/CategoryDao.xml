@@ -11,6 +11,16 @@
 		category_status
 	</sql>
 
+	<!--获得分类总数-->
+    <select id="countCategory" resultType="Integer">
+        SELECT COUNT(*) FROM `category`
+        <where>
+                <if test="status!=null">
+                    category_status=#{status}
+                </if>
+        </where>
+    </select>
+
 	<select id="getCategory" resultType="com.sjw.blog.entity.Category">
 		SELECT
 		<include refid="category_table_all_column" />

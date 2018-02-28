@@ -44,4 +44,13 @@
 	<!-- 对静态资源文件的访问 -->
 	<mvc:default-servlet-handler />
 
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.sjw.blog.interceptor.HomeResourceInterceptor"/>
+        </mvc:interceptor>
+		
+    </mvc:interceptors>
+
 </beans>
