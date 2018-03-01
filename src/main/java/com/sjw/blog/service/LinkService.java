@@ -6,4 +6,6 @@ package com.sjw.blog.service;
 */
 public interface LinkService {
 
+	Integer countLink(Integer status);
+
 }

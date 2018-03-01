@@ -36,4 +36,11 @@ public class TagServiceImpl implements TagService {
 		}
 		return tagDTOList;
 	}
+
+	@Override
+	public Integer countTag(Integer status) {
+		return tagDao.countTag(status);
+	}
+	
+	
 }

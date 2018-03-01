@@ -160,7 +160,7 @@
             <ul>
                 <c:forEach items="${recentCommentList}" var="r">
                 <li style="border: none;">
-                    <a href="/article/${r.articleCustom.articleId}/#anchor-comment-${r.commentCustom.commentId}" title="${r.articleCustom.articleTitle}" rel="external nofollow">
+                    <a href="/article/${r.article.articleId}/#anchor-comment-${r.commentCustom.commentId}" title="${r.article.articleTitle}" rel="external nofollow">
                         <img alt=""src="${r.commentCustom.commentAuthorAvatar}" class="avatar avatar-64 photo" height="64" width="64">
                         <span class="comment_author">
                             <strong>${r.commentCustom.commentAuthorName}</strong>

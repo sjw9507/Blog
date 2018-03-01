@@ -20,7 +20,6 @@
 		article_order
 	</sql>
 
-	<!--获取文章总数 -->
 	<select id="countArticle" resultType="Integer">
 		SELECT COUNT(*) FROM `article`
 		<where>
@@ -30,7 +29,15 @@
 		</where>
 	</select>
 	
-	<!--获得文章留言总数-->
+	<select id="countArticleView" resultType="Integer">
+        SELECT SUM(article_view_count) FROM article
+        <where>
+            <if test="status!=null">
+                article_status=#{status}
+            </if>
+        </where>
+    </select>
+    
     <select id="countArticleComment" resultType="Integer">
         SELECT SUM(article_comment_count) FROM article
         <where>
@@ -40,7 +47,6 @@
         </where>
     </select>
 
-	<!--通过分页查询文章 -->
 	<select id="getArticleByPage" resultType="com.sjw.blog.entity.Article">
 		SELECT
 		<include refid="article_table_all_columns" />
@@ -83,7 +89,6 @@
 		</where>
 	</select>
 
-	<!-- 相关文章 -->
 	<select id="listArticleWithSameCategory" resultType="com.sjw.blog.entity.Article">
 		SELECT
 		<include refid="article_table_all_columns" />
@@ -106,7 +111,6 @@
 		#{limit}
 	</select>
 
-	<!--获得访问量较多的文章 -->
 	<select id="listArticleByViewCount" resultType="com.sjw.blog.entity.Article">
 		SELECT
 		<include refid="article_table_all_columns" />
@@ -121,7 +125,6 @@
 		limit #{limit}
 	</select>
 
-	<!--获得下一篇的文章 -->
 	<select id="getAfterArticle" resultType="com.sjw.blog.entity.Article">
 		SELECT
 		<include refid="article_table_all_columns" />
@@ -136,7 +139,7 @@
 		ORDER BY article_id
 		limit 1
 	</select>
-	<!--获得上一篇的文章 -->
+	
 	<select id="getPreArticle" resultType="com.sjw.blog.entity.Article">
 		SELECT
 		<include refid="article_table_all_columns" />
@@ -152,7 +155,6 @@
 		limit 1
 	</select>
 	
-	<!--获得随机文章-->
     <select id="listRandomArticle" resultType="com.sjw.blog.entity.Article">
         SELECT
         <include refid="article_table_all_columns"/>
@@ -168,7 +170,6 @@
         limit #{num}
     </select>
 
-    <!--获得评论数较多的文章列表-->
     <select id="listArticleByCommentCount" resultType="com.sjw.blog.entity.Article">
         SELECT
         <include refid="article_table_all_columns"/>
@@ -182,6 +183,16 @@
         ORDER BY
         article_comment_count DESC,article_order DESC, article_id DESC
         limit #{num}
+    </select>
+    
+    <select id="getLastUpdateArticle" resultType="com.sjw.blog.entity.Article">
+        SELECT
+        <include refid="article_table_all_columns"/>
+        FROM `article`
+        WHERE article_update_time=
+        (
+          SELECT max(article_update_time) FROM article
+        )
     </select>
 
 </mapper>

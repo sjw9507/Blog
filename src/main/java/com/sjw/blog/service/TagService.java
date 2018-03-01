@@ -13,4 +13,6 @@ public interface TagService {
 
 	List<TagDTO> getTag(Integer status) throws Exception;
 
+	Integer countTag(Integer status);
+
 }

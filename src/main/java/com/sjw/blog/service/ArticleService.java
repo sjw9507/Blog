@@ -37,5 +37,9 @@ public interface ArticleService {
 	public Integer countArticle(Integer status) throws Exception;
 
 	public Integer countArticleComment(Integer status) throws Exception;
+
+	public Integer countArticleView(Integer status);
+
+	public Article getLastUpdateArticle();
 	
 }

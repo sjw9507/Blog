@@ -37,4 +37,8 @@ public interface ArticleDao {
 
 	List<Article> listArticleByCommentCount(@Param(value = "status")Integer status, @Param(value = "num")int num);
 
+	Integer countArticleView(@Param(value = "status")Integer status);
+
+	Article getLastUpdateArticle();
+
 }

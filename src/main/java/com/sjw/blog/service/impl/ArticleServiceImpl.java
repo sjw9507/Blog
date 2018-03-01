@@ -204,7 +204,16 @@ public class ArticleServiceImpl implements ArticleService {
 	public Integer countArticleComment(Integer status) {
 		return articleDao.countArticleComment(status);
 	}
-	
-	
 
+	//获取浏览总数
+	@Override
+	public Integer countArticleView(Integer status) {
+		return articleDao.countArticleView(status);
+	}
+
+	@Override
+	public Article getLastUpdateArticle() {
+		return articleDao.getLastUpdateArticle();
+	}
+	
 }

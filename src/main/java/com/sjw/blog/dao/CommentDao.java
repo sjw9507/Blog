@@ -14,6 +14,9 @@ import com.sjw.blog.entity.CommentCustom;
  */
 public interface CommentDao {
 
-	List<CommentCustom> getCommentByArticleId(@Param(value = "status") Integer status,@Param(value = "articleId") Integer articleId);
+	List<CommentCustom> getCommentByArticleId(@Param(value = "status") Integer status,
+			@Param(value = "articleId") Integer articleId);
+
+	List<CommentCustom> listRecentComment(@Param(value = "limit") Integer limit);
 
 }

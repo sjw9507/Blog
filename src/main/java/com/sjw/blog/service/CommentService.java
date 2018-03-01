@@ -2,6 +2,8 @@ package com.sjw.blog.service;
 
 import java.util.List;
 
+import com.sjw.blog.dto.CommentDTO;
+
 
 /**
 * @author Jiawei Shi
@@ -9,6 +11,8 @@ import java.util.List;
 *
 */
 public interface CommentService {
+
+	List<CommentDTO> listRecentComment(Integer limit);
 
 
 }

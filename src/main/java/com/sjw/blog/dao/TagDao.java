@@ -17,4 +17,6 @@ public interface TagDao {
 
 	Tag selectTagById(@Param(value = "id") String id);
 
+	Integer countTag(@Param(value = "status")Integer status);
+
 }

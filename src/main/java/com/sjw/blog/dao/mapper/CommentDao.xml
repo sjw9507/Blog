@@ -31,4 +31,15 @@
 		ORDER BY comment_id ASC
 	</select>
 
+    <select id="listRecentComment" parameterType="Integer" resultType="com.sjw.blog.entity.CommentCustom">
+        SELECT
+        <include refid="comment_table_all_columns"/>
+        FROM
+        `comment`
+        <where>
+            comment_status=1 AND comment_role=0
+        </where>
+        ORDER BY comment_id DESC
+        LIMIT #{limit}
+    </select>
 </mapper>

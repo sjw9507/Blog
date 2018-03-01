@@ -8,6 +8,16 @@
 		tag_status
 	</sql>
 
+	<!--获得标签总数-->
+    <select id="countTag" resultType="Integer">
+        SELECT COUNT(*) FROM `tag`
+        <where>
+            <if test="status!=null">
+                tag_status=#{status}
+            </if>
+        </where>
+    </select>
+
 	<!--获得标签列表 -->
 	<select id="getTag" resultType="com.sjw.blog.entity.Tag">
 		SELECT
