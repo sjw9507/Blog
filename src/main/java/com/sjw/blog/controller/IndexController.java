@@ -57,22 +57,6 @@ public class IndexController {
 		List<Notice> noticeList = noticeService.getNotice(1);
 		model.addAttribute("noticeList", noticeList);
 
-		// 顶部菜单
-		List<Menu> menuList = menuService.getMenu(1);
-		model.addAttribute("menuList", menuList);
-
-		// 基本信息
-		Options options = optionsService.getOptions();
-		model.addAttribute("options", options);
-
-		// 菜单目录
-		List<Category> categoryList = categoryService.getCategory(1);
-		model.addAttribute("categoryList", categoryList);
-
-		// 所有标签栏
-		List<TagDTO> tagList = tagService.getTag(1);
-		model.addAttribute("tagList", tagList);
-
 	}
 
 	// 首页显示列表

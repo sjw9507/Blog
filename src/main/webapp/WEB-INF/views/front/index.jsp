@@ -84,7 +84,7 @@
 						</span>
 						<span class="comment">
 							&nbsp;&nbsp;
-							<a href="/article/${a.article.articleId}#comments" rel="external nofollow">
+							<a href="<%=basePath%>article/${a.article.articleId}#comments" rel="external nofollow">
 								<i class="fa fa-comment-o"></i>
 								<c:choose>
 									<c:when test="${a.article.articleCommentCount==0}">
@@ -103,7 +103,7 @@
 				<!-- .entry-content -->
 
 				<span class="entry-more">
-					<a href="/article/${a.article.articleId}" rel="bookmark"> 阅读全文 </a>
+					<a href="<%=basePath%>article/${a.article.articleId}" rel="bookmark"> 阅读全文 </a>
 				</span>
 			</article>
 		</c:forEach> </main>

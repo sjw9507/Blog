@@ -45,4 +45,17 @@
 		</where>
 	</select>
 
+	<select id="listArticleWithCategoryByPage" resultType="com.sjw.blog.entity.Article">
+        SELECT * FROM `article`
+        <where>
+            <if test="status!=null">
+                article_status=#{status} AND
+            </if>
+             article_parent_category_id=#{cateId} OR
+             article_child_category_id=#{cateId}
+        </where>
+        ORDER BY article_id DESC
+        limit #{startPos},#{pageSize}
+    </select>
+    
 </mapper>

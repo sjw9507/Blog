@@ -41,4 +41,6 @@ public interface ArticleDao {
 
 	Article getLastUpdateArticle();
 
+	int countArticleByCategory(@Param(value = "status")Integer status, @Param(value = "cateId")Integer cateId);
+
 }

@@ -76,6 +76,19 @@
 		</where>
 
 	</select>
+	
+	<select id="countArticleByCategory" resultType="Integer">
+        SELECT count(*)
+        FROM  `article`
+        <where>
+            <if test="status!=null">
+                article_status=#{status} AND
+            </if>
+
+            article_parent_category_id=#{cateId} OR
+            article_child_category_id=#{cateId}
+        </where>
+    </select>
 
 	<select id="getArticleById" resultType="com.sjw.blog.entity.Article">
 		SELECT

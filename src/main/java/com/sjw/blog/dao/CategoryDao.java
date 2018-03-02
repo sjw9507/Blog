@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.sjw.blog.dto.ArticleDTO;
+import com.sjw.blog.entity.Article;
 import com.sjw.blog.entity.Category;
 
 /**
@@ -17,6 +19,12 @@ public interface CategoryDao {
 
 	Category getCategoryById(@Param(value = "status") Integer status, @Param(value = "id") Integer id);
 
-	Integer countCategory(@Param(value = "status")Integer status);
+	Integer countCategory(@Param(value = "status") Integer status);
 
+	// 获得含有该分类的文章列表
+	public List<Article> listArticleWithCategoryByPage(@Param(value = "status") Integer status,
+			@Param(value = "cateId") Integer cateId, @Param(value = "startPos") Integer startPos,
+			@Param(value = "pageSize") Integer pageSize);
+
+	Category selectByPrimaryKey(@Param(value = "cateId")Integer cateId);
 }

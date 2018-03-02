@@ -3,6 +3,11 @@
     包括：顶部菜单，主要菜单(包括搜索按钮)，面包屑
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String pathHeader = request.getContextPath();
+	String basePathHeader = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ pathHeader + "/";
+%>
 
 <%--导航 start--%>
 <header id="masthead" class="site-header">
@@ -18,7 +23,7 @@
 						<a href="window.location.href='http://www.baidu.com'">注册</a>
 					</c:when>
 					<c:otherwise>
-						<a href="/admin">进入后台</a>
+						<a href="<%=basePathHeader%>admin">进入后台</a>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -68,7 +73,7 @@
 						<ul id="menu-pcmenu" class="down-menu nav-menu sf-js-enabled sf-arrows">
 
 							<li>
-								<a href="/">
+								<a href="<%=basePathHeader%>">
 									<i class="fa-home fa"></i>
 									<span class="font-text" data-toggle="tooltip" title="首页">首页</span>
 								</a>
@@ -77,7 +82,7 @@
 							<c:forEach items="${categoryList}" var="category">
 								<c:if test="${category.categoryPid==0}">
 									<li>
-										<a href="/category/${category.categoryId}">
+										<a href="<%=basePathHeader%>category/${category.categoryId}">
 											<i class="${category.categoryIcon}"></i>
 											<span class="font-text">${category.categoryName}&nbsp;</span>
 										</a>
@@ -85,7 +90,7 @@
 											<c:forEach items="${categoryList}" var="cate">
 												<c:if test="${cate.categoryPid==category.categoryId}">
 													<li>
-														<a href="/category/${cate.categoryId}" target="_blank">${cate.categoryName}</a>
+														<a href="<%=basePathHeader%>category/${cate.categoryId}" target="_blank">${cate.categoryName}</a>
 													</li>
 												</c:if>
 											</c:forEach>
